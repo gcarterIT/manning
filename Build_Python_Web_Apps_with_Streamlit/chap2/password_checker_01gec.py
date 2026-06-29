@@ -9,6 +9,8 @@ conditions = {
         lambda pw: any(char.islower() for char in pw),
     'At least one special character':
         lambda pw: any(char in ",.!?@#$%^&*()-_+=|\\/:;<>~" for char in pw),
+    'At least one numeral':
+        lambda pw: any(char.isdigit() for char in pw)
 }
 
 def get_password_properties(password):
@@ -28,4 +30,4 @@ if st.button("Check password"):
             else:
                 st.error(f'✖ Fail: {condition}')
     else:
-        st.write("Please enter a password.")
+        st.write("Please enter a password!")
