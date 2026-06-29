@@ -1,0 +1,4 @@
+Book Review: Data Storytelling with Altair and AI
+
+
+This book succeeds in illustrating the ease of using AI tools to generate quality code, not only saving you coding time, but also ‘teaching’ you how to improve and expand your own coding techniques. Also, producing enlightening and engaging visualizations is an important data science task that can benefit from AI tools. The author prevails in showing the simplicity of creating various, plots, charts, and graphs using AI. Do yourself, and your career, a favor and get this book. Bear in mind, due to ongoing updates to AI applications, you may need to modify some of the code examples.

@@ -1,0 +1,49 @@
+
+    Download and install GitHub Desktop from the official website
+    Launch GitHub Desktop
+    Sign in to your GitHub account or create a new account if needed
+    Click on the "File" menu and select "Clone Repository."
+    In the "Clone a repository" window, choose the "URL" tab.
+    Enter the repository URL https://github.com/alod83/Data-Storytelling-with-Python-Altair-and-Generative-AI in the "Repository URL" field
+    Choose the local path where you want to clone the repository
+    Click on the "Clone" button
+    Wait for GitHub Desktop to clone the repository to your local machine.
+
+
+
+
+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
+
+
+
+
+---------------------------------------------------------------------------
+APIRemovedInV1                            Traceback (most recent call last)
+Cell In[44], line 8
+      5 prompt = 'Compare the size of UY SCUTI to Anteres'
+      7 messages = [{"role": "user", "content": prompt}]
+----> 8 response = openai.ChatCompletion.create(
+      9     model="gpt-3.5-turbo",
+     10     messages=messages,
+     11     temperature=0,
+     12 )
+     13 output = response.choices[0].message["content"]
+     14 print(output)
+
+File ~\AppData\Roaming\Python\Python311\site-packages\openai\lib\_old_api.py:39, in APIRemovedInV1Proxy.__call__(self, *_args, **_kwargs)
+     38 def __call__(self, *_args: Any, **_kwargs: Any) -> Any:
+---> 39     raise APIRemovedInV1(symbol=self._symbol)
+
+APIRemovedInV1: 
+
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+125
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+
+
+I'm currently using opnai 1.12.0

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.17.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-6bf908d001c7c1e472f7d201f7d5d990"}, "mark": {"type": "line", "point": {}}, "encoding": {"color": {"field": "Country", "type": "nominal"}, "x": {"axis": {"labelAngle": 0}, "field": "Year", "title": "", "type": "ordinal"}, "y": {"field": "Tourist Arrivals", "type": "quantitative"}}, "height": 300, "title": "Countries Trend in Arrivals", "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json", "datasets": {"data-6bf908d001c7c1e472f7d201f7d5d990": [{"Year": 1994, "Country": "IT", "Tourist Arrivals": 4640840.833333333}, {"Year": 2018, "Country": "IT", "Tourist Arrivals": 8016761.75}, {"Year": 1994, "Country": "FR", "Tourist Arrivals": 6472523.833333333}, {"Year": 2018, "Country": "FR", "Tourist Arrivals": 10112310.583333334}, {"Year": 1994, "Country": "DE", "Tourist Arrivals": 5617486.666666667}, {"Year": 2018, "Country": "DE", "Tourist Arrivals": 12132490.0}, {"Year": 1994, "Country": "PT", "Tourist Arrivals": 563354.8333333334}, {"Year": 2018, "Country": "PT", "Tourist Arrivals": 1703339.0}, {"Year": 1994, "Country": "ES", "Tourist Arrivals": 2960819.3333333335}, {"Year": 2018, "Country": "ES", "Tourist Arrivals": 8776694.583333334}, {"Year": 1994, "Country": "UK", "Tourist Arrivals": 2827583.3333333335}, {"Year": 2018, "Country": "UK", "Tourist Arrivals": 6375623.583333333}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

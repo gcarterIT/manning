@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.17.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300, "strokeWidth": 0}}, "hconcat": [{"vconcat": [{"data": {"name": "data-bc7d20e60779da43859b89fad7a375d5"}, "mark": {"type": "line", "color": "#81c01e", "strokeWidth": 6}, "encoding": {"x": {"axis": {"grid": false, "labels": false, "ticks": false}, "field": "Year", "title": "", "type": "nominal"}, "y": {"axis": {"grid": false, "labels": false, "ticks": false}, "field": "Value", "title": "", "type": "quantitative"}}, "height": 100, "title": "Air passengers in Portugal", "width": 150}, {"data": {"name": "data-5ecbe71b5b97e3fe7f1ee4985cd71629"}, "mark": {"type": "text", "align": "left", "color": "orange", "fontSize": 20, "lineBreak": "\n", "y": 100}, "encoding": {"text": {"field": "text", "type": "nominal"}}}]}, {"layer": [{"data": {"name": "data-aea972eb001971ebb4733bdf5ed9c5c1"}, "mark": {"type": "line", "point": {}}, "encoding": {"color": {"field": "Country", "type": "nominal"}, "x": {"axis": {"labelAngle": 0}, "field": "Date", "title": "", "type": "ordinal"}, "y": {"field": "Tourist Arrivals", "title": "%", "type": "quantitative"}}, "height": 300, "title": "Percentage increase in Tourist Arrivals", "width": 400}, {"data": {"name": "data-71db20d0bc40b4da1c6616877e275db6"}, "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 20}, "encoding": {"color": {"field": "Country", "legend": null, "scale": {"domain": ["Others (mean)", "PT"], "range": ["lightgrey", "#81c01e"]}, "type": "nominal"}, "text": {"field": "Text", "type": "nominal"}, "x": {"field": "X", "type": "ordinal"}, "y": {"field": "Y", "type": "quantitative"}}}]}], "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json", "datasets": {"data-bc7d20e60779da43859b89fad7a375d5": [{"Country Name": "Portugal", "Year": "1970", "Value": 1415400.0}, {"Country Name": "Portugal", "Year": "1971", "Value": 1656100.0}, {"Country Name": "Portugal", "Year": "1972", "Value": 1949800.0}, {"Country Name": "Portugal", "Year": "1973", "Value": 2247100.0}, {"Country Name": "Portugal", "Year": "1974", "Value": 2250400.0}, {"Country Name": "Portugal", "Year": "1975", "Value": 1681300.0}, {"Country Name": "Portugal", "Year": "1976", "Value": 1650300.0}, {"Country Name": "Portugal", "Year": "1977", "Value": 1833400.0}, {"Country Name": "Portugal", "Year": "1978", "Value": 2014400.0}, {"Country Name": "Portugal", "Year": "1979", "Value": 2264500.0}, {"Country Name": "Portugal", "Year": "1980", "Value": 1978100.0}, {"Country Name": "Portugal", "Year": "1981", "Value": 2168500.0}, {"Country Name": "Portugal", "Year": "1982", "Value": 2272200.0}, {"Country Name": "Portugal", "Year": "1983", "Value": 2218400.0}, {"Country Name": "Portugal", "Year": "1984", "Value": 2311800.0}, {"Country Name": "Portugal", "Year": "1985", "Value": 2315200.0}, {"Country Name": "Portugal", "Year": "1986", "Value": 2422600.0}, {"Country Name": "Portugal", "Year": "1987", "Value": 2785600.0}, {"Country Name": "Portugal", "Year": "1988", "Value": 3025100.0}, {"Country Name": "Portugal", "Year": "1989", "Value": 3187300.0}, {"Country Name": "Portugal", "Year": "1990", "Value": 3504500.0}, {"Country Name": "Portugal", "Year": "1991", "Value": 3571800.0}, {"Country Name": "Portugal", "Year": "1992", "Value": 4108800.0}, {"Country Name": "Portugal", "Year": "1993", "Value": 4378900.0}, {"Country Name": "Portugal", "Year": "1994", "Value": 4359600.0}, {"Country Name": "Portugal", "Year": "1995", "Value": 4590100.0}, {"Country Name": "Portugal", "Year": "1996", "Value": 4805500.0}, {"Country Name": "Portugal", "Year": "1997", "Value": 6281400.0}, {"Country Name": "Portugal", "Year": "1998", "Value": 7023100.0}, {"Country Name": "Portugal", "Year": "1999", "Value": 7339300.0}, {"Country Name": "Portugal", "Year": "2000", "Value": 6721365.0}, {"Country Name": "Portugal", "Year": "2001", "Value": 6650492.0}, {"Country Name": "Portugal", "Year": "2002", "Value": 6795580.0}, {"Country Name": "Portugal", "Year": "2003", "Value": 7590259.0}, {"Country Name": "Portugal", "Year": "2004", "Value": 9052471.0}, {"Country Name": "Portugal", "Year": "2005", "Value": 10139655.0}, {"Country Name": "Portugal", "Year": "2006", "Value": 9440930.0}, {"Country Name": "Portugal", "Year": "2007", "Value": 10320040.0}, {"Country Name": "Portugal", "Year": "2008", "Value": 11171020.0}, {"Country Name": "Portugal", "Year": "2009", "Value": 9903771.0}, {"Country Name": "Portugal", "Year": "2010", "Value": 10428173.51}, {"Country Name": "Portugal", "Year": "2011", "Value": 11014639.0}, {"Country Name": "Portugal", "Year": "2012", "Value": 11338080.0}, {"Country Name": "Portugal", "Year": "2013", "Value": 11860998.0}, {"Country Name": "Portugal", "Year": "2014", "Value": 12635439.0}, {"Country Name": "Portugal", "Year": "2015", "Value": 12706909.0}, {"Country Name": "Portugal", "Year": "2016", "Value": 13105120.0}, {"Country Name": "Portugal", "Year": "2017", "Value": 15937325.0}, {"Country Name": "Portugal", "Year": "2018", "Value": 17367956.0}, {"Country Name": "Portugal", "Year": "2019", "Value": 22047878.98}, {"Country Name": "Portugal", "Year": "2020", "Value": 6219531.061}, {"Country Name": "Portugal", "Year": "2021", "Value": 8056494.578}], "data-5ecbe71b5b97e3fe7f1ee4985cd71629": [{"text": "Thanks to the introduction of low-cost flights, Portugal has experienced an increase in tourist arrivals of over 200% in 25 years, even surpassing the increase in the other countries."}], "data-aea972eb001971ebb4733bdf5ed9c5c1": [{"Date": 1994, "Country": "PT", "Tourist Arrivals": 0.0}, {"Date": 2018, "Country": "PT", "Tourist Arrivals": 202.3563301873981}, {"Date": 1994, "Country": "Others (mean)", "Tourist Arrivals": 0.0}, {"Date": 2018, "Country": "Others (mean)", "Tourist Arrivals": 101.66689580391962}], "data-71db20d0bc40b4da1c6616877e275db6": [{"Text": "Portugal: 202.36%", "Y": 202.3563301873981, "X": 2018, "Country": "PT"}, {"Text": "Others (mean): 101.67%", "Y": 101.66689580391962, "X": 2018, "Country": "Others (mean)"}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+ðOnline: wdpg.io/1-1-1
+This example uses the h1 element to turn the text How New Words Are Created into a
+first-level heading
+
+- the online links fail
+
+
+
+
+
+BEWARE - hightlights warnings food for noobies
+WARNING, MASTER - same
+
+
+Display of examples dividing between web page, html and css is extremely helpful
+
+
+good alignment between text and online playground
+
+
+good motivational and encouraging tone
+
+immediately following explanations with examples and exercises made it easier to retain knowledge gained
+
+
+good pics
+
+swxtions are in short easily digestible chunks
+
+playground makes it easier to learn, dont have to worry about creating own development environment
+
+introduces 'nicre to know" tidbits without being distracting
+
+playground a handy tool for web development after completing the book
+
+"play online" link fail in firefox but not in Edge
+
+
+fails:
+"Online: wdpg.io/2/6-3-2
+This example shows you how to embed multiple video file formats in a web page."
+
+
+chapter 8 phases into more advanced concepts pretty quickly, good stuff so process slowly 
+
+"see it" animated positioning failed  - lesson 8.2, 9.2
+
+
+highlight, bookmark, and note functions are helpful while reading
+
+Approaches the more complex topics at appropriate progress while reading
+
+Although much of today's web design is probably done using AI, its important to wev design basics foe purposes of fine-tuning and troubleshooting.
+
+
+
+many of the code samples include &lt; for less than symbol and footer &gt; for greter than symbol - this is confusing.and hard to read  [confirm and test]
+
+
+
+Includes great development tools:
+    Color Chooser
+    Color Scheme Calculator
+    CSS Color Keywords
+    HTML5 Entity Browser
+    Line Length Helper
+    RGB Visualizer
+
+
+The bok is long, ???? pages, but beyond afew beginning chapters, the reader can skip around and focus on topics of interest  qithout lostof cohesiveness
+ 
+
+
+provides "skeletons" that can be used as templates

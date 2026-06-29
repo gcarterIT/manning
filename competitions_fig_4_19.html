@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.14.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-60f433edd980cc009160ac0e348e1e7c"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "Training Type", "sort": "-y", "type": "nominal"}, "y": {"field": "Percentage Improvement", "scale": {"domain": [0, 100]}, "type": "quantitative"}}, "width": 300, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-60f433edd980cc009160ac0e348e1e7c": [{"Training Type": "Sprinting", "Record Time (Seconds)": 9.58, "Our Best Time": 15.07, "Percentage Difference": 57.30688935281837, "Percentage Improvement": 42.69311064718163}, {"Training Type": "Long-distance running", "Record Time (Seconds)": 7299.0, "Our Best Time": 13261.76, "Percentage Difference": 81.69283463488149, "Percentage Improvement": 18.307165365118507}, {"Training Type": "Swimming", "Record Time (Seconds)": 46.91, "Our Best Time": 88.01, "Percentage Difference": 87.61458111276916, "Percentage Improvement": 12.385418887230841}, {"Training Type": "Cycling", "Record Time (Seconds)": 1963.49, "Our Best Time": 2795.22, "Percentage Difference": 42.35977774269284, "Percentage Improvement": 57.64022225730716}, {"Training Type": "Rowing", "Record Time (Seconds)": 335.8, "Our Best Time": 462.33, "Percentage Difference": 37.68016676593209, "Percentage Improvement": 62.31983323406791}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+Midjourpro needed for project ney $10/ month
+
+Midjourney Discord $8 / month
+
+
+Photoshop $20 / month
+as of 12/15/25 photoshop is free in ChatGPT but may be dumbed down
+
+claude Teams version (nneeded for chap 6) $35  / month
+
+
+Notion (chap) exhausted free version in previous project $10 . month
+
+
+Claude needed for chap 8 project $20 / month
+
+ 
+genspark (chap 6) using free version exercise gives "Your credits are insufficient for this request", $19.99 / month
+
+Some software may offer limited free trial, but that puts reader under pressure to complete eercises before expiration date
+
+
+Publishers need to come up with a way to keep
+- synch product version with publication dates
+- forewarn readers of product costs to complete project and exercises - b4 purchase
+
+
+inordinate amount emotional pics are a waste of space ex: fig 6.4, use space to direct emphasize talking points
+
+
+------------------------------------------
+
+
+combine prompts to rank affectiveness of monthly AI roducts
+
+
+
+example:
+"List the top three AI models that currently generate well-researched, well-written, and accurate nonfiction. Ensure that you’re researching current pro critics reviews and benchmarks. Not just the status at the date of some learning cutoff of your own. Briefly describe the top three models’ strengths and weaknesses."
+
+would be excellent tool toassure use of best tools 
+
+
+in some places there is an over use of fancy AI diagrams where simpler diagrams could be more effective to reinforce concepts (example: Figure 6.7)
+
+chap 6 proj
+ChapGPT 5.2 gives different outlining results
+
+
+
+mention possible resources needed to run demos - ram space
+
+================================================================
+
+chap 1
+------
+
+Excellent intro to the topic leaving the reader hungry for more prompt/context engineering info they can apply in their profession.
+
+Good emphasis on how AI technology changes quickly.
+
+The tables regarding prompt vs context engineering, model comparison, but some priority should be given to creating a table comparing the different prompt types for quick reference, since applying the correct prompt type can make a major difference in results.
+
+
+chap 2
+------
+
+As mentioned in other places in this questionairrre , readers beed be forewarned about application fee they need to incur to do examples, exercises, projects etc.
+
+The chapter "appears" to be a good intro to Midjourney with interesting demos for the reader to try. Many create tips. I don't have Midjourney, so I can't attest to the accuracy of instructions provided.
+
+chap 3
+------
+
+A "Visaul Vocabluary" table would be helpful for quccik reference.
+
+Content is good, but software (at cost) is needed to get a "feel" for what's being discussed.
+
+
+chap 4
+------
+
+A lot of time spent on history. I would expected to see a few step-by-step examples for music and video, similar to the ones we saw in the previous chapter for images. This chapter had less of a "get productive" feel
+
+interesting, but too much history if the readers main interest is to "get productive:
+
+interesting history of copyrights. more should be said about how the reader can protect him/herself
+
+Good charts comparing music and video model performance
+
+
+chap 5
+------
+
+Project appears to be comprehensive and a good demo of using the different products together, but did not try Claude because of the fee required,
+
+A very good chapter on AI writing tools discussing the features and how such tools are being used - good and bad. The project requires the reader to incur a fee for Claude to complete project
+
+
+chap 6
+------
+
+Good overall discussion of agents. Maybe overly emotional discussions. Could use more useful diagrams.
+
+
+
+chap 7
+------
+
+Pretty good but unable to install roblox
+
+
+
+chap 8
+------
+
+Very interesting and personal chapter. But did not try project, requires paid version of Claude pro
+
+
+chap 9
+------
+
+Great information, should include a cheatsheet. A walk through of the project with a fake dataset, allowing the reader experience an AI implementation (albeit on a very limited scale would have added 30% more value to this chapter,
+
+Lots of good insights and recommendations about AI implementations. Lack of a project for the reader to walk through is a disappointment,
+
+chap 10
+--------
+
+Good discussion of AI vs human ignorance of AI
+
+
+appendix b
+----------
+
+This was a discussion of different art styles, so to gain the best understanding of a style you would need to see an example of the style.
+
+
+
+
+
+
+---------------------------------
+
+some tables lack "Fig." notation
+
+

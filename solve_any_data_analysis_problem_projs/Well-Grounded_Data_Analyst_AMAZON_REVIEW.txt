@@ -1,0 +1,116 @@
+The author’s follows a standard format from chapter to chapter, strictly adhering to the results-driven process. He reinforces his process with graphics representing each step of the process, and he also makes the content interesting by including personal stories that highlight concepts emphasized in the sections.
+
+
+
+The title of the chapter 1 “Bridging the gap between data science training and the real world” is most motivating in starting and completing the book. Data science is one of the most popular concentrations in colleges, universities, institutions, online tutorials, etc. But we all know what we gain academically will not always, or at all, match what we confront professionally. This book gives us a taste of real-world tasks and projects. Though the book projects are specific, the author helps the reader develop a mindset, so the skills acquired from reading are adaptable to a variety of professional challenges.
+
+
+The book’s concept, applying data science in the real world, is timeless since there’s usually a difference between the academic world and the business world. Regardless the level of experience, beginner to advanced, the book can used as an intro to professional data tasks or a refresher on applying various data science practices professionally.  
+
+
+
+The author does an excellent of make learning the subject easy through the following:
+Writing in a non-technical tone.
+
+Good recaps at the end of each chapter.
+
+Great teaching code snippets; some minor issues encountered during execution but should be easily resolved by a reader having a beginner’s level of Python experience.
+
+The author’s repeating the “result-driven” graphics (1. Understand, 2. Start at the end, 3. Identify, etc.) from chapter to chapter, emphasized how this process is highly adaptable and can be successfully applied to various type projects.
+
+
+
+I picked up a few techniques like normalizing data before clustering, and de-transforming cluster centers to further analyze data.
+
+The chapters on time-series analysis was particularly instructive.
+
+
+
+The book is essential to graduating data analysts as they are about to enter the professional world. This book may reduce “surprises” they’ll encounter in the workplace. Regarding the seasoned professional, this book may offer a few insights they’ve seen before, or confirm their existing process is on the right track.
+
+
+. In terms of content, this book is no more or no less valuable than free online resources. There are many blogs, articles, etc., that discuss real applications of data science concepts. But this book has the advantage of having a diverse spread of knowledge in one place. To get the same information from online sources would require several time intensive web searches. 
+One of the biggest advantages that many of the free online sources has been accessibility to the authors and/or content creators. Through blog comment, email, DM, etc., the reader can request help from the author. 
+
+
+
+Using the current versions of Python, Jupyter Notebook, Python libraries/packages, most code snippets ran successfully without modifications.  Implementation of Streamlit and the virtual environment was problematic; I don’t know if this was related to versioning issues.
+
+
+
+I agree with the author, but I believe the reader needs to make available time to complete the book projects, and gain more exposure to "unusual" projects in the professional workplace. 
+1.	For readers of this book, the amount of time to complete book projects will be open ended – no deadlines. But formal education is usually based on established scheduling of courses and classes. So, students of formal education would probably not have enough time to complete a project to a depth matching the author’s projects.
+2.	With the exception of some post-graduate programs, many courses will be taught from a book which will not include many of the nuances in a real-world tasks or project.
+19
+
+
+
+The author should provide a printable cheat sheet of the result-driven process that displays a table having these 4 columns:
+- name of the process step (Understand, Start at the end, Identify, etc.)
+- description of the step
+- type of data (numeric data, categorical data, times series data)
+- short descriptive examples of applying the step to a specified data type
+
+For sake of completing this review on time, I did not attempt to complete any of the projects on my own. Instead, I implemented the provided code included with solution walk-throughs. I surmise the time required to independently complete the projects will vary widely based on experience, but I agree with the author that independently attempting projects before referring to the author’s solutions will provide a far more enriching learning experience. For beginners in particular, I’d recommend setting aside as much time as possible to attempt a project in minimal available amount of time. Stretching out the time too long could result in a loss of understanding “momentum.’
+
+For each of the code listings include a “Listings” label with a section reference and code description. Example “Listing 2.1 Calculating the median absolute deviation”
+
+Add some colorful diagrams to make chapters a little more visually appealing and engaging.
+
+Chapters are well- organized
+- when related, gives recap of prior chapter
+- repeats event-driven process diagrams with each project
+- shows the progression of event-driven decisions by showing the growth of the flow chart as project progresses
+- chapters designed for skipping around
+
+In chapters where the results-driven flowchart grew progressively, the chart shrinks making it difficult to read.
+
+Though the popularity of Python far exceeds R, it would be great if R readers had access to R versions of the code samples.
+
+Author provides great ideas for extending projects, encouraging readers to practice and gain a deeper understanding of book’s content.
+
+
+=========================================================================================================
+
+The title of the chapter 1 “Bridging the gap between data science training and the real world” is most motivating in starting and completing the book. Data science is one of the most popular concentrations in colleges, universities, institutions, online tutorials, etc. But we all know what we gain academically will not always, or at all, match what we confront professionally. This book gives us a taste of real-world tasks and projects. Though the book projects are specific, the author helps the reader develop a mindset, so the skills acquired from reading are adaptable to a variety of professional challenges.
+
+
+
+
+====================================================================================================
+
+
+
+
+
+The real world of data science is full of nuances not addressed in academic environments.Within these environments topics are data science fundamentals (data cleaning, data exploration, modeling, etc.). But to get through the deadlines of terms and semesters, there’s no time to cover these topics in any depth. Thus, when entering the professional world, having attained a shallow level knowledge could be a problem when encountering the ‘unknown’. This book helps bridge that knowledge gap. The author provides a well-organized approach that can be applied to any situation getting you to your goal in minimal a time with maximum results. 
+
+The author’s follows a standard format from chapter to chapter, strictly adhering to the results-driven process. He reinforces his process with graphics representing each step of the process, and he also makes the content interesting by including personal stories that highlight concepts emphasized in the sections.
+
+The author’s repeating the “result-driven” graphics (1. Understand, 2. Start at the end, 3. Identify, etc.) from chapter to chapter, emphasized how this process is highly adaptable and can be successfully applied to various type projects.
+
+
+
+
+
+
+Chapters are well- organized
+- when related, gives recap of prior chapter
+- repeats event-driven process diagrams with each project
+- shows the progression of event-driven decisions by showing the growth of the flow chart as project progresses
+- chapters designed for skipping around
+
+
+
+
+
+
+Most of the code snippets ran flawlessly but some additionaal time may be ncessary to Implement Streamlit and the virtual environment.
+ 
+
+
+Author provides great ideas for extending projects, encouraging readers to practice and gain a deeper understanding of book’s content.
+
+
+
+ There are many blogs, articles, etc., that discuss real applications of data science concepts. But this book has the advantage of having a diverse spread of knowledge in one place.

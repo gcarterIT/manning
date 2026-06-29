@@ -1,0 +1,132 @@
+install command:
+
+gcart>pip install torch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 --index-url https://download.pytorch.org/whl/cpu
+
+
+python command:
+
+import torch (Jupyter notebook)
+
+
+command output
+
+---------------------------------------------------------------------------
+OSError                                   Traceback (most recent call last)
+Cell In[2], line 1
+----> 1 import torch
+      2 torch.__version__
+
+File ~\AppData\Roaming\Python\Python311\site-packages\torch\__init__.py:148
+    146                 err = ctypes.WinError(ctypes.get_last_error())
+    147                 err.strerror += f' Error loading "{dll}" or one of its dependencies.'
+--> 148                 raise err
+    150     kernel32.SetErrorMode(prev_error_mode)
+    153 def _preload_cuda_deps(lib_folder, lib_name):
+
+OSError: [WinError 126] The specified module could not be found. Error loading "C:\Users\gcart\AppData\Roaming\Python\Python311\site-packages\torch\lib\fbgemm.dll" or one of its dependencies.
+
+
+After appliying resolution suggested here:
+
+How to Fix Dll Errors (\torch\lib\fbgemm.dll) When Installing and Importing PyTorch in Python
+https://www.youtube.com/watch?v=sbQPGyVbePY
+
+
+
+python command:
+
+import torch (Jupyter notebook)
+import torch
+torch.__version__
+
+command output:
+
+'2.4.0+cpu'
+
+
+Command:
+
+torch.cuda.is_available()
+
+Output:
+
+False (my pc has no gpus)
+
+
+We'll buy gpus frpm gooflw colab if necessary
+
+
+
+------------------------------------------------------------------------------------
+
+excellent diaframs
+
+
+Exercise 2.2 Data loaders with different strides and context sizes
+
+To develop more intuition for how the data loader works, try to run it with different settings such as max_length=2 and stride=2, and max_length=8 and stride=2.
+
+
+This exercise fails, for what ever value set for strides , always treats as stride = 1
+
+
+Brother MFC-J6945DW Printer
+
+
+------------------------------
+
+listing 4.6 The transformer block component of GPT
+
+from chapter03 import MultiHeadAttention  <-- what is the reference to "chapto3"
+
+if MultiHeadAttention is implemented in the same notebook that is not needed;
+this would probably be less misleading as a comment.
+
+
+--------------------------------------------
+
+Tp maintain a good reading flow, the author skips over the the deep details not necessary for high level understanding to get through the book, but provides such details in the appendix for those who want a deeper understanding
+
+
+Author  does a good job of including print statements along the code so you can "watch" the processing
+
+
+I suggest readers familiarize themselves with the appendices first
+
+
+
+
+--------
+
+12/22/24
+
+copying and pasting was successful until Sec 6.5. i could not resolve issue; fpr sake of time will not attempt any more code.
+
+
+=========hind the LLM
+
+general
+
+online offers advantage of highlight, annotate, and bookmark, an ai assistant, discussions
+
+great illustration repeated and amended as each step is completed.
+
+embedded hot links for extended explanantions
+
+
+==================================================================================================================================
+
+great book
+
+
+I've been tasked to write a book review for the book titled "Build a Large Language Model (From Scratch)"
+
+This is a synopsis of the book:
+
+"In Build a Large Language Model (from Scratch) bestselling author Sebastian Raschka guides you step by step through creating your own LLM. Each stage is explained with clear text, diagrams, and examples. You’ll go from the initial design and creation, to pretraining on a general corpus, and on to fine-tuning for specific tasks."
+
+This a draft of my review:
+
+'As LLMs continue to be a hot AI topic, many data professionals find the science behind LLM implementation to be intimidating, But I found this reference to be best way to develop a full understanding of how LLMs work. The book is well organized in a start-to-finish fashion. Throughout the book, the author provides well referenced flowcharts summarizing each step of process. You're able to track ypur learning progress at any point in the book. You'll gain lasting hands-on experience by implementing the author's clearly articulated and professionally formatted code. The liveBook option further enhances the learning experience  by offering options to highlight, annotate, and bookmark book content. The book also has a discussion group and an ai assistant. If you want to learn what goes on behind the LLM "curtain" this book is for you.'
+
+Review my draft and improve using my writing style.

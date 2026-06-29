@@ -1,0 +1,455 @@
+# ===========================================================
+# 🧠 Lead Research Agent: the coordinator that stitches phases together
+# ===========================================================
+# In a multi-agent system, you typically need one “boss” component that:
+#   • initializes state for a new request
+#   • decides when a phase is complete
+#   • merges results into a final deliverable for the user
+#
+# This class plays that role.
+#
+# What to notice:
+#   • process_phase(...) handles the control logic across phases
+#   • post_*_coordination methods translate raw outputs into next-step inputs
+#   • _generate_final_report_from_evaluation(...) turns evaluations into a human-readable report
+#
+# In LangGraph terms:
+#   • lead_supervisor_node(state) is the node wrapper used inside the graph.
+#
+# Debugging tip:
+#   • When something goes wrong, look at the state's `errors` list and the logs.
+class LeadResearchAgent:
+    """Lead Research Agent - Master coordinator for the research system."""
+
+    def __init__(self):
+        # self.config = get_config()
+        self.logger = get_logger("lead_research_agent")
+
+    def _validate_paper_structure(self, paper: Dict[str, Any], index: int) -> bool:
+        """Validate that a paper has the required structure."""
+        try:
+            # Check required fields
+            required_fields = ["id", "title", "metadata"]
+            missing_fields = [field for field in required_fields if field not in paper]
+
+            if missing_fields:
+                self.logger.warning(f"Paper {index} missing required fields: {missing_fields}")
+                return False
+
+            # Check metadata structure
+            metadata = paper.get("metadata", {})
+            if not isinstance(metadata, dict):
+                self.logger.warning(f"Paper {index} metadata is not a dictionary")
+                return False
+
+            # Check for abstract (required for evaluation)
+            if not metadata.get("abstract"):
+                self.logger.warning(f"Paper {index} has no abstract")
+                return False
+
+            return True
+
+        except Exception as e:
+            self.logger.error(f"Paper validation error for paper {index}: {e}")
+            return False
+
+
+
+    def _initialize(self, state: ResearchSystemState, request: Dict[str, Any]) -> Dict[str, Any]:
+        """Initialize research and transition to planning phase."""
+
+        self.logger.info("Initializing research request")
+
+        # If request_id is empty, create one
+        if not state.get("request_id"):
+            request_id = str(uuid.uuid4())
+            research_objective = request.get("research_objective", state.get("research_objective", ""))
+        else:
+            request_id = state["request_id"]
+            research_objective = state["research_objective"]
+
+        self.logger.info("Phase transition: INITIALIZATION → PLANNING")
+
+        # Return state updates
+        updates = {
+            "request_id": request_id,
+            "research_objective": research_objective,
+            "current_phase": ResearchPhase.PLANNING,
+            "phase_history": [{
+                "from_phase": ResearchPhase.INITIALIZATION,
+                "to_phase": ResearchPhase.PLANNING,
+                "timestamp": datetime.now()
+            }],
+            "created_at": datetime.now(),
+            "updated_at": datetime.now()
+        }
+
+        return {k: v for k, v in updates.items() if v is not None}
+
+
+
+    def _generate_final_report_from_evaluation(self, state: ResearchSystemState) -> str:
+        """Generate final research report from evaluation results."""
+
+        evaluation_results = state.get("evaluation_results", [])
+        discovered_papers = state.get("discovered_papers", [])
+        evaluation_metadata = state.get("synthesis_data", {}).get("evaluation_metadata", {})
+
+        if not evaluation_results:
+            return "No evaluation results available to generate report."
+
+        # Calculate summary statistics
+        total_papers = len(evaluation_results)
+        avg_agi_score = evaluation_metadata.get("avg_agi_score", 0)
+        score_distribution = evaluation_metadata.get("score_distribution", {})
+
+        # Sort papers by AGI score
+        sorted_papers = sorted(evaluation_results, key=lambda x: x.get('agi_score', 0), reverse=True)
+
+        # Create comprehensive report
+        report = f"""# AGI Research Analysis Report
+
+## Executive Summary
+
+**Research Objective:** {state.get('research_objective', 'Not specified')}
+
+**Discovery Overview:**
+- Total papers discovered: {len(discovered_papers)}
+- Papers successfully evaluated: {total_papers}
+- Average AGI score: {avg_agi_score:.1f}/100
+
+**AGI Potential Distribution:**
+- High AGI Potential: {score_distribution.get('high', 0)} papers
+- Medium AGI Potential: {score_distribution.get('medium', 0)} papers
+- Low AGI Potential: {score_distribution.get('low', 0)} papers
+
+## Key Findings
+
+### Top-Scoring Papers (AGI Potential)
+
+"""
+
+        # Add top 5 papers with highest AGI scores
+        for i, paper in enumerate(sorted_papers[:5], 1):
+            title = paper.get('paper_title', 'Unknown Title')
+            authors = paper.get('paper_authors', [])
+            agi_score = paper.get('agi_score', 0)
+            classification = paper.get('agi_classification', 'Unknown')
+            key_innovations = paper.get('key_innovations', [])
+            overall_assessment = paper.get('overall_assessment', '')
+
+            report += f"""#### {i}. {title}
+**Authors:** {', '.join(authors[:3])}{'...' if len(authors) > 3 else ''}
+**AGI Score:** {agi_score}/100 ({classification})
+**Key Innovations:** {', '.join(key_innovations[:3])}
+**Assessment:** {overall_assessment}
+
+"""
+
+        # Add insights and recommendations
+        high_potential_papers = len([p for p in evaluation_results if 'High' in p.get('agi_classification', '')])
+        medium_potential_papers = len([p for p in evaluation_results if 'Medium' in p.get('agi_classification', '')])
+
+        report += f"""
+## Insights and Recommendations
+
+### Current State of AGI Research
+
+Based on the evaluation of {total_papers} papers, the field shows:
+
+"""
+
+        if avg_agi_score >= 70:
+            report += "- **Strong AGI advancement:** Multiple papers demonstrate significant progress toward AGI capabilities\n"
+        elif avg_agi_score >= 40:
+            report += "- **Moderate AGI progress:** Papers show promising developments but need more breakthrough innovations\n"
+        else:
+            report += "- **Early-stage AGI research:** Most papers focus on narrow AI applications with limited AGI relevance\n"
+
+        if high_potential_papers > 0:
+            report += f"- **Breakthrough potential:** {high_potential_papers} papers show high AGI potential\n"
+        elif medium_potential_papers > 0:
+            report += f"- **Emerging potential:** {medium_potential_papers} papers show medium AGI potential\n"
+        else:
+            report += f"- **Limited AGI relevance:** Current research focuses on domain-specific applications rather than general intelligence\n"
+
+        report += f"""
+### Future Research Directions
+
+"""
+
+        if high_potential_papers > 0:
+            report += """1. **Priority Focus:** Deepen analysis of high-potential AGI papers
+2. **Collaboration:** Connect with research teams behind breakthrough papers
+3. **Follow-up Studies:** Track developments from top-scoring research groups
+4. **Implementation:** Consider practical applications of high-scoring innovations
+"""
+        else:
+            report += """1. **Broaden Search:** Expand search criteria to find more AGI-relevant papers
+2. **Alternative Sources:** Include additional academic databases and preprint servers
+3. **Keyword Enhancement:** Refine search keywords to capture emerging AGI concepts
+4. **Timeline Adjustment:** Consider extending the search timeframe
+5. **Expert Consultation:** Seek input from AGI researchers on current promising directions
+"""
+
+        report += f"""
+---
+*Report generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*
+*Total processing time: {evaluation_metadata.get('processing_time', 'Unknown')}*
+"""
+
+        return report
+
+
+    def process_phase(self, state: ResearchSystemState, request: Dict[str, Any] = None) -> Dict[str, Any]:
+        """Process the current phase and return state updates."""
+
+        current_phase = state["current_phase"]
+        request_id = state["request_id"]
+
+        try:
+            # Handle each phase appropriately
+            if current_phase == ResearchPhase.INITIALIZATION:
+                return  self._initialize(state, request)
+            elif current_phase == ResearchPhase.PLANNING:
+                return  self._post_planning_coordination(state)
+            elif current_phase == ResearchPhase.DISCOVERY:
+                return  self._post_discovery_coordination(state)
+            elif current_phase == ResearchPhase.EVALUATION:
+                return  self._post_evaluation_coordination(state)
+            else:
+                # Already complete or unknown phase
+                self.logger.info("Phase processing complete", phase=current_phase.value)
+                return {}
+
+        except Exception as e:
+            self.logger.error(f"Error in phase processing: {e}")
+            return {
+                "errors": state.get("errors", []) + [{
+                    "error_type": type(e).__name__,
+                    "error_message": str(e),
+                    "context": {"phase": current_phase.value},
+                    "timestamp": datetime.now()
+                }]
+            }
+
+
+
+    def _post_planning_coordination(self, state: ResearchSystemState) -> Dict[str, Any]:
+        """Coordinate after planning phase completes."""
+
+        # Check if we have an execution plan
+        if state.get("synthesis_data", {}).get("execution_plan"):
+            self.logger.info("Phase transition: PLANNING → DISCOVERY")
+
+            plan = state["synthesis_data"]["execution_plan"]
+            self.logger.info("Execution plan validated",
+                           keywords=len(plan.get("search_keywords", [])))
+
+            return {
+                "current_phase": ResearchPhase.DISCOVERY,
+                "phase_history": state.get("phase_history", []) + [{
+                    "from_phase": ResearchPhase.PLANNING,
+                    "to_phase": ResearchPhase.DISCOVERY,
+                    "timestamp": datetime.now()
+                }],
+                "updated_at": datetime.now()
+            }
+        else:
+            # No plan created, move to completion
+            self.logger.warning("No execution plan created - moving to completion")
+            return {
+                "current_phase": ResearchPhase.COMPLETION,
+                "final_report": "Failed to create execution plan for the research objective.",
+                "phase_history": state.get("phase_history", []) + [{
+                    "from_phase": ResearchPhase.PLANNING,
+                    "to_phase": ResearchPhase.COMPLETION,
+                    "timestamp": datetime.now()
+                }],
+                "updated_at": datetime.now()
+            }
+
+    def _post_discovery_coordination(self, state: ResearchSystemState) -> Dict[str, Any]:
+        """Coordinate after discovery phase completes."""
+
+        discovered_papers = state.get("discovered_papers", [])
+
+        self.logger.info("Discovery phase coordination",
+                        papers_discovered=len(discovered_papers))
+
+        # Validate discovered papers structure
+        valid_papers = []
+        if discovered_papers:
+            for i, paper in enumerate(discovered_papers):
+                if self._validate_paper_structure(paper, i):
+                    valid_papers.append(paper)
+
+            if valid_papers:
+                # Move to evaluation phase
+                self.logger.info("Phase transition: DISCOVERY → EVALUATION",
+                               valid_papers=len(valid_papers))
+
+                return {
+                    "current_phase": ResearchPhase.EVALUATION,
+                    "discovered_papers": valid_papers,
+                    "phase_history": state.get("phase_history", []) + [{
+                        "from_phase": ResearchPhase.DISCOVERY,
+                        "to_phase": ResearchPhase.EVALUATION,
+                        "timestamp": datetime.now(),
+                        "papers_count": len(valid_papers)
+                    }],
+                    "updated_at": datetime.now()
+                }
+            else:
+                # No valid papers found
+                self.logger.warning("No valid papers found - moving to completion")
+                return {
+                    "current_phase": ResearchPhase.COMPLETION,
+                    "final_report": f"No valid papers were found. {len(discovered_papers)} papers were discovered but failed validation.",
+                    "phase_history": state.get("phase_history", []) + [{
+                        "from_phase": ResearchPhase.DISCOVERY,
+                        "to_phase": ResearchPhase.COMPLETION,
+                        "timestamp": datetime.now(),
+                        "reason": "no_valid_papers"
+                    }],
+                    "updated_at": datetime.now()
+                }
+        else:
+            # No papers found at all
+            self.logger.warning("No papers discovered - moving to completion")
+            return {
+                "current_phase": ResearchPhase.COMPLETION,
+                "final_report": "No papers were discovered for the given research objective.",
+                "phase_history": state.get("phase_history", []) + [{
+                    "from_phase": ResearchPhase.DISCOVERY,
+                    "to_phase": ResearchPhase.COMPLETION,
+                    "timestamp": datetime.now(),
+                    "reason": "no_papers_discovered"
+                }],
+                "updated_at": datetime.now()
+            }
+
+    def _post_evaluation_coordination(self, state: ResearchSystemState) -> Dict[str, Any]:
+        """Coordinate after evaluation phase completes."""
+
+        evaluation_results = state.get("evaluation_results", [])
+
+        self.logger.info("Evaluation phase coordination",
+                        evaluation_results=len(evaluation_results))
+
+        if evaluation_results:
+            # Generate final report from evaluation results
+            self.logger.info("Phase transition: EVALUATION → COMPLETION")
+            final_report = self._generate_final_report_from_evaluation(state)
+
+            # Write report to file
+            with open("final_report.md", "w") as f:
+                f.write(final_report)
+
+            return {
+                "current_phase": ResearchPhase.COMPLETION,
+                "final_report": final_report,
+                "phase_history": state.get("phase_history", []) + [{
+                    "from_phase": ResearchPhase.EVALUATION,
+                    "to_phase": ResearchPhase.COMPLETION,
+                    "timestamp": datetime.now()
+                }],
+                "updated_at": datetime.now()
+            }
+        else:
+            # No evaluation results, create summary report
+            self.logger.warning("No evaluation results - creating summary report")
+            no_results_report = f"""# AGI Research Analysis Report
+
+## Executive Summary
+
+**Research Objective:** {state.get('research_objective', 'Not specified')}
+
+**Discovery Overview:**
+- Total papers discovered: {len(state.get('discovered_papers', []))}
+- Papers successfully evaluated: 0
+- Average AGI score: N/A
+
+## Key Findings
+
+No papers were successfully evaluated for AGI potential.
+
+## Recommendations
+
+1. **Broaden Search Criteria:** Expand search terms and sources
+2. **Adjust Date Range:** Consider extending the search timeframe
+3. **Review Evaluation Criteria:** Check if evaluation parameters are too restrictive
+
+---
+*Report generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*
+"""
+            with open("final_report.md", "w") as f:
+                f.write(no_results_report)
+
+            return {
+                "current_phase": ResearchPhase.COMPLETION,
+                "final_report": no_results_report,
+                "phase_history": state.get("phase_history", []) + [{
+                    "from_phase": ResearchPhase.EVALUATION,
+                    "to_phase": ResearchPhase.COMPLETION,
+                    "timestamp": datetime.now()
+                }],
+                "updated_at": datetime.now()
+            }
+
+
+def lead_supervisor_node(state: ResearchSystemState) -> ResearchSystemState:
+    """Lead supervisor node for the graph."""
+
+    logger = get_logger("lead_supervisor_node")
+    current_phase = state.get("current_phase", ResearchPhase.INITIALIZATION)
+
+    logger.info("=== LEAD SUPERVISOR NODE - START ===")
+    logger.info(f"Current Phase: {current_phase}")
+    logger.info(f"Request ID: {state.get('request_id', 'Not set')}")
+    logger.info(f"Research Objective: {state.get('research_objective', 'Not set')}")
+
+    lead_agent = LeadResearchAgent()
+
+    # Extract the research request from messages (only needed for initialization)
+    request = None
+    if state.get("current_phase") == ResearchPhase.INITIALIZATION or not state.get("current_phase"):
+        messages = state.get("messages", [])
+        if messages:
+            last_message = messages[-1]
+            if hasattr(last_message, 'content'):
+                try:
+                    request = json.loads(last_message.content)
+                except:
+                    request = {"research_objective": last_message.content}
+            else:
+                request = {"research_objective": "General AGI research"}
+        else:
+            # If no messages but we have research_objective in state, use it
+            if state.get("research_objective"):
+                request = {"research_objective": state["research_objective"]}
+            else:
+                request = {"research_objective": "General AGI research"}
+
+    # Process the current phase and get state updates
+    state_updates = lead_agent.process_phase(state, request)
+
+    # Log updates
+    logger.info("State updates received from lead agent",
+               updates=list(state_updates.keys()))
+
+    # Merge updates into state (following LangGraph pattern)
+    for key, value in state_updates.items():
+        if key == "phase_history" and key in state:
+            # Append to existing history
+            state[key] = state[key] + value
+        elif key == "errors" and key in state:
+            # Append to existing errors
+            state[key] = state[key] + value
+        else:
+            # Update or add the key
+            state[key] = value
+
+    logger.info(f"Lead supervisor processing complete - New Phase: {state.get('current_phase', 'unknown')}")
+
+    return state

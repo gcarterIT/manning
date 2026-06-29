@@ -1,0 +1,6 @@
+ setx OPENAI_API_KEY "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"
+
+
+
+
+This code required extensive research and a few modifications to work successfully.  There have been updates to openai since the latest edition of the book. As openai and other technologies in this book are constantly updated, this book could become updated quickly. Readers should have access to updated versions of the code in this book to keep up the changing technologies. Otherwise, the book is great today and useless tomorrow.

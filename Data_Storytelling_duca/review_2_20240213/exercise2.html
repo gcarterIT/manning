@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-e4a52c7b2ef05266c6b9b8102faa8626"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "Country", "scale": {"scheme": "set2"}, "type": "nominal"}, "order": {"field": "Tourist Arrivals", "sort": "ascending", "type": "quantitative"}, "strokeWidth": {"condition": {"test": "(datum.Country === 'PT')", "value": 7}, "value": 0.5}, "x": {"field": "Year", "title": "", "type": "ordinal"}, "y": {"field": "Tourist Arrivals", "title": "Tourist Arrivals", "type": "quantitative"}}, "title": "Tourist Arrivals in Portugal (1994-2018)", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-e4a52c7b2ef05266c6b9b8102faa8626": [{"Year": 1994, "Country": "DE", "Tourist Arrivals": 67409840.0, "PI": 0.0}, {"Year": 1994, "Country": "ES", "Tourist Arrivals": 35529832.0, "PI": 0.0}, {"Year": 1994, "Country": "FR", "Tourist Arrivals": 77670286.0, "PI": 0.0}, {"Year": 1994, "Country": "IT", "Tourist Arrivals": 55690090.0, "PI": 0.0}, {"Year": 1994, "Country": "PT", "Tourist Arrivals": 6760258.0, "PI": 0.0}, {"Year": 1994, "Country": "UK", "Tourist Arrivals": 33931000.0, "PI": 0.0}, {"Year": 2018, "Country": "DE", "Tourist Arrivals": 145589880.0, "PI": 115.97719264724557}, {"Year": 2018, "Country": "ES", "Tourist Arrivals": 105320335.0, "PI": 196.42790036271492}, {"Year": 2018, "Country": "FR", "Tourist Arrivals": 121347727.0, "PI": 56.23442792524287}, {"Year": 2018, "Country": "IT", "Tourist Arrivals": 96201141.0, "PI": 72.74373411858376}, {"Year": 2018, "Country": "PT", "Tourist Arrivals": 20440068.0, "PI": 202.35633018739816}, {"Year": 2018, "Country": "UK", "Tourist Arrivals": 76507483.0, "PI": 125.47959977601604}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
