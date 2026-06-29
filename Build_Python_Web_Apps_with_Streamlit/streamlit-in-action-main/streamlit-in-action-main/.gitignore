@@ -1,0 +1,7 @@
+# Python
+.idea/
+**/__pycache__/
+**/.streamlit/
+**/.ebextensions/
+**/.elasticbeanstalk/
+**/.DS_Store
