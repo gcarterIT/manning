@@ -1,1 +1,42 @@
 allow users to  copy code from page - for convenience
+
+
+
+3.4 
+
+no mention of using AI to create mockup
+
+fig 3.8
+
+x and > replaced with << and >>
+
+
+
+
+
+listing 3.2
+
+user should be familiar with classes
+
+
+chap 3 provides good easy to understand framework for project develpment
+
+
+
+
+
+
+Listing 4.9 The final version of todo_list.py
+
+still has issues when marking task as done, then marking as undone
+
+
+
+
+====================================================
+
+general
+-------
+
+
+there should be mini-tests of code snippets as book project progresses
