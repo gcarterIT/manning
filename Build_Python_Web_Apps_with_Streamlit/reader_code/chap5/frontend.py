@@ -3,7 +3,8 @@ from backend import list_quantities, list_units, convert_value
 from jokes import generate_joke
 
 if "joke" not in st.session_state:
-    st.session_state.joke = generate_joke("GmYvT41Hc33TBZtENNmRTErqIyQIXOZrTzg3jCXc")
+    api_key = st.secrets["jokes_api"]["api_key"]
+    st.session_state.joke = generate_joke(api_key)
 
 st.info(st.session_state.joke)
 

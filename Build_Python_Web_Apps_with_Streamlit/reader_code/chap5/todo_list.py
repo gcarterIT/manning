@@ -1,6 +1,5 @@
 import streamlit as st
 from task import Task
-
 from jokes import generate_joke
 
 st.info(generate_joke("GmYvT41Hc33TBZtENNmRTErqIyQIXOZrTzg3jCXc"))
@@ -9,6 +8,10 @@ if "task_list" not in st.session_state:
     st.session_state.task_list = []
 
 task_list = st.session_state.task_list
+
+if "joke" not in st.session_state:
+    api_key = st.secrets["jokes_api"]["api_key"]
+    st.session_state.joke = generate_joke(api_key)
 
 def add_task(task_name: str):
     task_list.append(Task(task_name))
