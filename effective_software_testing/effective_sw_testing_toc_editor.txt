@@ -1,0 +1,143 @@
+================================================================================
+PAGE 1
+================================================================================
+
+                      Effective Software Testing - 2nd edition
+
+                                                    Mauricio Aniche
+
+The document proposes the second edition of Effective Software Testing.
+In a nutshell, this new edition will:
+
+• Be more foundational and programming-language agnostic.
+• Several improvements based on reader feedback.
+• Focus on how AI and agentic AI can help in the process.
+
+Contact:
+• Mauricio Aniche:
+  https://www.linkedin.com/in/mauricioaniche/
+
+Table of Contents
+
+1 Effective and systematic software testing
+1.1 Developers who test vs. developers who do not
+1.2 Effective software testing for developers
+1.3 Principles of software testing
+1.4 Testing in the AI world
+
+
+================================================================================
+PAGE 2
+================================================================================
+
+1.5 Can we find all the bugs?
+
+What changes from the 1st edition?
+
+2 The testing pyramid
+2.1 Test levels
+2.2 Picking the right test level
+2.3 Testing pyramid
+2.4 Characteristics of a good test suite
+3 Writing thorough tests
+3.1 The requirements say it all
+
+
+================================================================================
+PAGE 3
+================================================================================
+
+3 Writing thorough tests
+
+3.1 Understanding the requirements
+3.2 Specification-based testing in a nutshell
+3.3 Finding bugs with specification testing
+3.4 Specification-based testing in the real world
+3.5 Using AI to test requirements
+
+4 Using coverage to improve the tests
+4.1 Code coverage, the right way
+
+
+================================================================================
+PAGE 4
+================================================================================
+
+4.2 Structural testing in a nutshell
+4.3 Code coverage criteria
+4.4 Complex conditions and the MC/DC coverage criterion
+4.5 Handling loops
+4.6 Criteria subsumption
+4.7 Specification-based and structural testing
+4.8 Boundary testing and structural testing
+4.9 Structural testing alone often is not enough
+4.10 Structural testing in the real world
+4.12 Structural testing and AI
+
+5 To mock or not to mock?
+
+
+================================================================================
+PAGE 5
+================================================================================
+
+5 To mock or not to mock?
+
+5.2 An introduction to mocking frameworks
+5.3 Mocking best practices
+5.4 AI and mocking
+
+6 Designing for testability
+
+6.1 Separating infrastructure code from domain code
+6.2 Dependency injection and controllability
+6.3 Making classes observable
+6.4 Constructor vs parameter injection
+6.5 Designing for testability in the real world
+6.6 AI and testability
+
+
+================================================================================
+PAGE 6
+================================================================================
+
+7 Test-driven development
+7.1 Our first TDD session
+7.2 Reflecting on TDD
+7.3 TDD in the real world
+
+8 Testing from the inside
+8.1 Testing from the inside vs outside
+8.2 Design by contracts
+8.3 Property-based testing
+8.4 Intelligent testing
+
+
+================================================================================
+PAGE 7
+================================================================================
+
+8.5 AI and testing from the inside
+
+9 Larger tests
+9.1 Integration testing
+9.2 Component testing
+9.3 Use-case testing
+9.4 System testing
+9.5 Larger tests in the real world
+9.6 AI and larger tests
+
+
+================================================================================
+PAGE 8
+================================================================================
+
+10 Test code quality
+11 Scaling testing in organizations
+12 The future of software testing
+
+Appendix A – Testing Patterns
+Appendix B – Testing Anti-Patterns
+Appendix C – Further Reading
+Bibliography
+Index
